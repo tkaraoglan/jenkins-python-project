@@ -53,7 +53,7 @@ pipeline{
     stage('compose'){
     agent any
     steps{
-            sh "docker push 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1:latest"
+            sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 950905626774.dkr.ecr.us-east-1.amazonaws.com"
             sh "docker-compose up -d"
     }
 }
