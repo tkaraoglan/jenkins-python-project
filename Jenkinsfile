@@ -33,6 +33,7 @@ pipeline{
                     sh 'python -m pytest -v --junit-xml results.xml src/appTest.py'
         }
     }
+}
         stage('build'){
             agent any
             steps{
@@ -60,6 +61,6 @@ pipeline{
         }
     }
 }
-        }
-    }
+}
+    
 
