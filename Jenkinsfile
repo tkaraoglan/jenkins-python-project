@@ -8,7 +8,7 @@ pipeline{
         MYSQL_DATABASE_PORT = 3306
     }
     stages{
-        stage("compile"){
+        stage('compile'){
             agent{
                 docker{
                     image 'python:alpine'
@@ -21,6 +21,7 @@ pipeline{
                     stash(name: 'compilation_result', includes: 'src/*.py*')
                 }
             }
+}
         stage('build'){
             agent any
             steps{
@@ -47,4 +48,4 @@ pipeline{
   }
 }
 }
-}
+
