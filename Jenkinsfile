@@ -21,6 +21,7 @@ pipeline{
                     stash(name: 'compilation_result', includes: 'src/*.py*')
                 }   
             }
+        }
         stage('test') {
             agent {
                 docker {
