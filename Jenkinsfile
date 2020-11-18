@@ -27,7 +27,7 @@ pipeline{
             agent any
             steps{
                 sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 950905626774.dkr.ecr.us-east-1.amazonaws.com"
-                sh "docker tag deneme1:latest 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1:latest"
+                sh "docker push 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1:latest"
     }
 }
         stage('build'){
