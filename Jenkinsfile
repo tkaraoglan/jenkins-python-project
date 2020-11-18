@@ -22,10 +22,10 @@ pipeline{
                 }
             }
         stage('build'){
-    agent any
-    steps{
-        sh "docker build -t tkaraoglan/ilkdeneme ."
-        sh "docker tag 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1/tkaraoglan/ilkdeneme:latest"
+            agent any
+            steps{
+                sh "docker build -t tkaraoglan/ilkdeneme ."
+                sh "docker tag 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1/tkaraoglan/ilkdeneme:latest"
     }
 }
         stage('test') {
