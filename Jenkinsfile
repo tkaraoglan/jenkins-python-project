@@ -50,6 +50,13 @@ pipeline{
             sh 'python -m pytest -v --junit-xml results.xml src/appTest.py'
         }
     }
+    stage('compose'){
+    agent any
+    steps{
+            sh "docker push 950905626774.dkr.ecr.us-east-1.amazonaws.com/deneme1:latest"
+            sh "docker-compose up -d"
+    }
+}
     post {
         always {
             junit 'results.xml'
