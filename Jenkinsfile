@@ -44,5 +44,6 @@ pipeline{
             junit 'results.xml'
         }
     }
-}
+  }
+ }
 }
