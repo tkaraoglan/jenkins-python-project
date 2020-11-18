@@ -6,6 +6,7 @@ pipeline{
         MYSQL_DATABASE_USER = "admin"
         MYSQL_DATABASE_DB = "phonebook"
         MYSQL_DATABASE_PORT = 3306
+        PATH="/usr/local/bin/:${env.PATH}"
     }
     stages{
         stage('compile'){
@@ -21,6 +22,13 @@ pipeline{
                     stash(name: 'compilation_result', includes: 'src/*.py*')
                 }
             }
+}
+        stage('push'){
+            agent any
+            steps{
+                sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 046402772087.dkr.ecr.us-east-1.amazonaws.com"
+                sh "docker push 046402772087.dkr.ecr.us-east-1.amazonaws.com/matt/handson-jenkins:latest"
+    }
 }
         stage('build'){
             agent any
@@ -48,4 +56,5 @@ pipeline{
   }
 }
 }
+
 
